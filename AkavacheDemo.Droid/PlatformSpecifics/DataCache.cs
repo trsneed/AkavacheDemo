@@ -11,23 +11,18 @@ namespace AkavacheDemo.Droid
     {
         public async Task StoreAirport(Airport airport)
         {
-            await BlobCache.LocalMachine.InsertObject(airport.code, airport);
+            await BlobCache.LocalMachine.InsertObject(airport.code.ToLower(), airport);
         }
-
-        public async Task StoreAirportWithTimeLimit(Airport airport)
-        {
-            //Only store data for 5 minutes
-            await BlobCache.LocalMachine.InsertObject(airport.code, airport, DateTime.Now.AddMinutes(5));
-        }
-
+            
         public async Task<Airport> GetAirport(string airportCode)
         {
             try
             {
-               return await BlobCache.LocalMachine.GetObject<Airport>(airportCode);
+                return await BlobCache.LocalMachine.GetObject<Airport>(airportCode.ToLower());
             }
             catch(KeyNotFoundException ex)
             {
+                //for now we want to have the service go get information
                 return null;
             }
         }
