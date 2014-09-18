@@ -1,20 +1,21 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.192.168.56.101:5555" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="AkavacheDemo.Droid/MainActivity.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.GalaxyNexus" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="AkavacheDemo.Droid/PlatformSpecifics/DataCache.cs">
     <Files>
-      <File FileName="AkavacheDemo.Droid/MainActivity.cs" Line="22" Column="22" />
-      <File FileName="AkavacheDemo.Droid/PlatformSpecifics/DataCache.cs" Line="29" Column="29" />
-      <File FileName="AkavacheDemo.Common/Airport.cs" Line="6" Column="6" />
-      <File FileName="AkavacheDemo.Common/Webservice.cs" Line="24" Column="24" />
+      <File FileName="AkavacheDemo.Droid/MainActivity.cs" Line="21" Column="21" />
+      <File FileName="AkavacheDemo.Droid/PlatformSpecifics/DataCache.cs" Line="1" Column="1" />
+      <File FileName="AkavacheDemo.Common/Airport.cs" Line="5" Column="5" />
+      <File FileName="AkavacheDemo.Common/Webservice.cs" Line="10" Column="10" />
+      <File FileName="AkavacheDemo.Common/packages.config" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="AkavacheDemo.Common" expanded="True" />
-          <Node name="AkavacheDemo.Droid" expanded="True" selected="True">
-            <Node name="ComponentReferenceFolder" expanded="True" />
-            <Node name="PlatformSpecifics" expanded="True" />
-            <Node name="Resources" expanded="True" />
+          <Node name="AkavacheDemo.Droid" expanded="True">
+            <Node name="PlatformSpecifics" expanded="True">
+              <Node name="DataCache.cs" selected="True" />
+            </Node>
           </Node>
         </State>
       </Pad>
