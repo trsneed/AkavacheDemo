@@ -146,8 +146,14 @@ namespace AkavacheDemo.Droid
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f05000e
+			public const int airportImage = 2131034126;
+			
 			// aapt resource value: 0x7f050006
 			public const int btnFindAirport = 2131034118;
+			
+			// aapt resource value: 0x7f05000d
+			public const int btnImage = 2131034125;
 			
 			// aapt resource value: 0x7f05000c
 			public const int btnSave = 2131034124;

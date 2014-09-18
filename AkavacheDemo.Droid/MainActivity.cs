@@ -9,6 +9,7 @@ using Android.OS;
 using Akavache;
 using AkavacheDemo.Common;
 using AndroidHUD;
+using Splat;
 
 namespace AkavacheDemo.Droid
 {
@@ -23,8 +24,9 @@ namespace AkavacheDemo.Droid
         {
 
             BlobCache.ApplicationName = "AkavacheDemo";
-            _cache = new DataCache();
             _service = new Webservice();
+            _cache = new DataCache(_service);
+
             base.OnCreate(bundle);
 
             // Set our view from the "main" layout resource
@@ -34,6 +36,8 @@ namespace AkavacheDemo.Droid
             // and attach an event to it
             Button button = FindViewById<Button>(Resource.Id.btnFindAirport);
             Button saveButton = FindViewById<Button>(Resource.Id.btnSave);
+            Button getImageButtom = FindViewById<Button>(Resource.Id.btnImage);
+            ImageView imView = FindViewById<ImageView>(Resource.Id.airportImage);
             EditText airportCode = FindViewById<EditText>(Resource.Id.txtAirportCode);
             TextView code = FindViewById<TextView>(Resource.Id.lblCode);
             TextView name = FindViewById<TextView>(Resource.Id.lblName);
@@ -44,20 +48,18 @@ namespace AkavacheDemo.Droid
                 AndHUD.Shared.Show(this, "Searching", -1, MaskType.Black);
                 if(!string.IsNullOrWhiteSpace(airportCode.Text))
                 {
+                    //get the data
                     var airport = await _cache.GetAirport(airportCode.Text);
-                    if (airport == null)
-                    {
-                        airport = await _service.GetAirportByCode(airportCode.Text);
-                    }
+
                     AndHUD.Shared.Dismiss();
+
+                    //set the data
                     if(airport != null)
                     {
                         code.Text = airport.code;
                         name.Text = airport.name;
                         location.Text = airport.location;
                         comment.Text = airport.comments;
-                        //insert that data
-                        _cache.StoreAirport(airport);
                     }
                     else
                     {
@@ -83,6 +85,15 @@ namespace AkavacheDemo.Droid
                     await _cache.StoreAirport(airportToSave).ContinueWith(p => AndHUD.Shared.Dismiss())
                         .ContinueWith(d => AndHUD.Shared.ShowSuccess(this, "Saved", MaskType.Black, TimeSpan.FromSeconds(2)));
                 }
+            };
+
+            getImageButtom.Click += async delegate
+            {
+                AndHUD.Shared.Show(this, "Getting Image", -1, MaskType.Black);
+                var image = await _cache.GetAnImage();
+                imView.SetImageDrawable(image.ToNative());
+
+                AndHUD.Shared.Dismiss();
             };
         }
     }
